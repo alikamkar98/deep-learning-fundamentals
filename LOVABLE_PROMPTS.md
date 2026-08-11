@@ -4,6 +4,79 @@ Copy-paste prompts to build a polished project page in [Lovable](https://lovable
 
 ---
 
+## ⭐ MAIN PROMPT — The interactive learning hub
+
+This is the big one: an interactive page where each concept is a **clickable card** that opens
+a panel teaching it deeply (what it is · why we chose it · the alternatives & how they differ ·
+how we used it · the visualization). All the text lives in `CONCEPTS.md` and all the images are
+public in the repo, so Lovable can pull both directly.
+
+```
+Build an interactive "learning hub" page for my portfolio called "Deep Learning Fundamentals".
+Match my site's existing design system exactly — navy (#1f3a5f) and amber (#f59e0b), same fonts,
+same rounded cards, fully responsive, works in light and dark.
+
+The full teaching content is in this file — READ IT and use it as the source of truth for every
+explanation, comparison table, and takeaway:
+https://raw.githubusercontent.com/alikamkar98/deep-learning-fundamentals/main/CONCEPTS.md
+
+PAGE STRUCTURE:
+
+1) HERO — eyebrow "Interactive · PyTorch · Built from scratch"; headline "How a neural network
+   actually learns"; a one-paragraph intro; and a row of 4 stat chips: "8 core concepts",
+   "0.0755 test MSE", "1→16→16→1 network", "PyTorch from scratch".
+
+2) "WHAT WAS THE DATA?" section — two cards (the synthetic curve, and California Housing), using
+   the "The data" section of CONCEPTS.md, each with its image:
+   - Synthetic curve:  https://raw.githubusercontent.com/alikamkar98/deep-learning-fundamentals/main/assets/the_task.png
+   - California Housing: https://raw.githubusercontent.com/alikamkar98/deep-learning-fundamentals/main/assets/capstone.png
+
+3) "THE EIGHT IDEAS" — a responsive grid of 8 CLICKABLE cards (4 cols desktop, 2 tablet, 1 mobile).
+   Each card shows a number, an icon, the concept title, and its one-line tagline. Clicking a card
+   opens a MODAL (or an expanding panel) for that concept containing, in this order:
+     - the concept's visualization image (see URL list below)
+     - "What it is"  (from CONCEPTS.md)
+     - "Why we chose it"  (from CONCEPTS.md)
+     - "The options & how they differ" — render the comparison table, and highlight the row marked
+       "our choice" with an amber background + an "our choice" pill
+     - "In our project"  (from CONCEPTS.md)
+     - a highlighted "Takeaway" line
+   The modal must close on the X button, on clicking the backdrop, and on the Escape key, and be
+   keyboard accessible.
+
+   The 8 concepts and their image URLs (base: .../main/assets/):
+     1. Train / Validation / Test      → split_three_ways.png
+     2. Forward Pass                    → architecture.png
+     3. Loss & MSE                      → nudge_the_weight_loss.png
+     4. Gradient Descent                → gradient_descent_ball.png
+     5. Batch · Iteration · Epoch       → batch_epoch_diagram.png
+     6. Regularization & Dropout        → overfit_vs_regularization_dropout.png
+     7. Weight Initialization           → weight_init.png
+     8. Hyperparameter Tuning           → hyperparameter_search.png
+
+4) "HOW WE TRAINED" section — show the 4-step training loop (zero_grad → forward+loss → backward →
+   optimizer.step) as a numbered list, plus the result line (test MSE 0.0755; California RMSE 0.512),
+   next to this image:
+   https://raw.githubusercontent.com/alikamkar98/deep-learning-fundamentals/main/assets/watch_it_learn.png
+
+5) FOOTER — a call-to-action button "Open the full notebook on GitHub" linking to
+   https://github.com/alikamkar98/deep-learning-fundamentals
+
+STYLE: use monospace for small labels/eyebrows (it nods to the Jupyter notebook origin), generous
+whitespace, subtle hover lift on the cards, and a smooth fade/scale when a modal opens. Make it feel
+like a premium interactive case study, not a blog post. Use the real content from CONCEPTS.md — do
+not invent or summarize it away.
+```
+
+> **If Lovable can't fetch the CONCEPTS.md URL:** open `CONCEPTS.md` yourself, copy its contents,
+> and paste them into the prompt where it references the file. Everything Lovable needs is in there.
+>
+> **Want to see the finished result first?** Open `learning-hub.html` from the repo in your browser
+> (just double-click it) — it's a complete, working version of exactly this hub. You can even tell
+> Lovable: *"rebuild this to match my site"* and paste the HTML.
+
+---
+
 ## Prompt 1 — Build the project showcase page (main prompt)
 
 ```
