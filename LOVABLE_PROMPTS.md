@@ -54,22 +54,35 @@ case study, not a blog post.
 
 ---
 
-## Prompt 2 — Add the visuals (screenshots)
+## Prompt 2 — Add the visuals (real images, no upload needed)
+
+The images live in this public repo, so Lovable can load them straight from these URLs —
+no file upload required.
 
 ```
 In the Deep Learning Fundamentals page, add a "Selected Visualizations" section between
-"The Key Idea" band and the Tech Stack. Make it an image gallery of 3 wide screenshots
-with short captions underneath each:
-- Image 1 caption: "Nudge one weight → watch the loss change. The dashed tangent is the gradient."
-- Image 2 caption: "Watch the curve get fit, epoch by epoch."
-- Image 3 caption: "Overfitting vs. regularization vs. dropout, side by side."
-Use a clean card frame around each image with a soft shadow, and make the gallery a
-responsive grid that stacks to one column on mobile. Use placeholder images for now.
+"The Key Idea" band and the Tech Stack. Make it a responsive image gallery (3 columns on
+desktop, 1 on mobile) with a clean card frame and soft shadow around each image, and a
+short caption underneath each. Load the images directly from these URLs:
+
+Image 1:
+https://raw.githubusercontent.com/alikamkar98/deep-learning-fundamentals/main/assets/nudge_the_weight_loss.png
+Caption: "Nudge one weight → watch the loss change. The dashed tangent is the gradient."
+
+Image 2:
+https://raw.githubusercontent.com/alikamkar98/deep-learning-fundamentals/main/assets/watch_it_learn.png
+Caption: "Watch the curve get fit, epoch by epoch."
+
+Image 3:
+https://raw.githubusercontent.com/alikamkar98/deep-learning-fundamentals/main/assets/overfit_vs_regularization_dropout.png
+Caption: "Overfitting vs. regularization vs. dropout, side by side."
+
+Make each image responsive (max-width 100%, auto height) and lazy-loaded.
 ```
 
-> Then upload three screenshots from the notebook (right-click a chart → save, or screenshot):
-> the **nudge-the-weight** loss curve, the **watch-it-learn** epochs plot, and the
-> **overfitting/regularization/dropout** comparison. These three are the most visually striking.
+> Two bonus visuals you can add the same way if you want a richer gallery:
+> - `.../main/assets/loss_surface_3d.png` — "The loss surface: learning is finding the lowest valley."
+> - `.../main/assets/hyperparameter_search.png` — "Hyperparameter search, ranked by validation loss."
 
 ---
 
