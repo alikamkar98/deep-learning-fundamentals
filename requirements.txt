@@ -1,0 +1,8 @@
+# Deep Learning Fundamentals — pinned to versions verified on Python 3.10
+torch>=2.0            # neural networks + autograd (CPU build is fine)
+numpy>=1.26
+matplotlib>=3.8       # all visualizations
+scikit-learn>=1.4     # California Housing dataset + train/test split + scaling
+pandas>=2.2           # tabular data handling
+jupyter>=1.0          # run the notebook
+ipywidgets>=7.8       # nicer progress output in notebooks
