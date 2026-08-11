@@ -59,7 +59,14 @@ PAGE STRUCTURE:
    next to this image:
    https://raw.githubusercontent.com/alikamkar98/deep-learning-fundamentals/main/assets/watch_it_learn.png
 
-5) FOOTER — a call-to-action button "Open the full notebook on GitHub" linking to
+5) "EVERY TERM, IN ONE LINE" — a glossary section. Read the "Glossary" part of CONCEPTS.md and
+   render EVERY term, grouped exactly as in the file (The network, Making a prediction, Measuring
+   error, Learning, Units of a training run, Data & evaluation, Generalizing well, Starting &
+   tuning). Lay the groups out as cards in a 2-column responsive grid; inside each, a clean
+   definition list (term in bold, one-line definition under it). This makes the page a complete,
+   self-contained learning resource — do not drop or shorten any term.
+
+6) FOOTER — a call-to-action button "Open the full notebook on GitHub" linking to
    https://github.com/alikamkar98/deep-learning-fundamentals
 
 STYLE: use monospace for small labels/eyebrows (it nods to the Jupyter notebook origin), generous

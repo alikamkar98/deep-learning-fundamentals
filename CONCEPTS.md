@@ -184,3 +184,85 @@ A real dataset built into scikit-learn: **20,640 districts, 8 features** (median
 ## How we trained
 
 Every epoch, for every batch: `zero_grad()` → forward + loss → `backward()` → `optimizer.step()`. The toy curve reached test MSE **0.0755** (≈ the noise floor); the same pipeline transferred to California Housing at **RMSE 0.512**.
+
+## Glossary — every term in one line
+
+**The network**
+
+- **Neural network** — A function with adjustable knobs (weights) that learns a pattern from examples.
+- **Neuron / unit** — One small computing element: it takes a weighted sum of its inputs and passes it through an activation.
+- **Weight** — A learnable number that scales an input. Training is the act of adjusting all the weights.
+- **Bias** — A learnable number added to a neuron's weighted sum, letting it shift its output up or down.
+- **Layer** — A group of neurons applied together. Networks stack layers: input → hidden → output.
+- **Hidden layer** — Any layer between the input and output — where the network builds its internal features.
+- **Linear layer** — Computes weight · input + bias. The basic building block (also called 'fully-connected' or 'dense').
+- **Activation function** — A nonlinearity (Tanh, ReLU, Sigmoid) applied after a layer so the network can bend, not just draw straight lines.
+- **MLP** — Multi-layer perceptron — a plain feed-forward network of linear layers + activations. What we built.
+- **Parameter** — Any learnable number in the network (all the weights and biases).
+- **Tensor** — A multi-dimensional array — how PyTorch stores data, inputs, and weights.
+
+**Making a prediction**
+
+- **Forward pass** — Pushing an input through the layers to produce a prediction.
+- **Prediction (ŷ)** — The network's current guess for the output.
+- **Nonlinearity** — The 'bend' an activation adds; without it, stacked layers collapse into one straight line.
+
+**Measuring error**
+
+- **Loss function** — A single number for how wrong the model is right now. Training minimizes it.
+- **MSE** — Mean Squared Error — average of squared gaps between prediction and target. Our regression loss.
+- **MAE** — Mean Absolute Error — average of absolute gaps; more robust to outliers than MSE.
+- **Cross-entropy** — The standard loss for classification (comparing probabilities), not regression.
+- **Noise floor** — The irreducible error from random noise in the data — the best any model can do.
+
+**Learning (the optimizer)**
+
+- **Gradient** — The slope of the loss with respect to a weight — which way, and how steeply, to change it.
+- **Backpropagation** — The algorithm that computes the gradient for every weight efficiently.
+- **Autograd** — PyTorch's automatic differentiation — it runs backprop for you via .backward().
+- **Optimizer** — The object that updates all weights using their gradients (e.g. SGD, Adam).
+- **Gradient descent** — The update rule: step each weight downhill — w ← w − learning_rate · gradient.
+- **Optimizer step** — One application of that update to every weight (optimizer.step()).
+- **Learning rate** — The step size. The single most important knob: too small = slow, too big = unstable.
+- **SGD** — Stochastic Gradient Descent — plain gradient descent on mini-batches.
+- **Adam** — An adaptive optimizer that tunes the step size per-weight; a robust default. What we used.
+
+**Units of a training run**
+
+- **Batch** — A small handful of examples processed together.
+- **Mini-batch** — The standard: a chunk of data per update (we used 16) — balances speed and stability.
+- **Iteration** — One weight update = one batch.
+- **Epoch** — One full pass over the entire training set.
+- **DataLoader** — PyTorch helper that serves shuffled mini-batches during training.
+
+**Data & evaluation**
+
+- **Training set** — The data the optimizer fits the weights on.
+- **Validation set** — Held-out data used to tune settings and decide when to stop — never trained on.
+- **Test set** — Held-out data opened once at the end for one honest score.
+- **Data leakage** — Letting test/validation information influence training — it inflates your score dishonestly.
+- **Cross-validation** — Rotating which slice is validation; useful when data is scarce.
+- **Feature scaling** — Standardizing features to mean 0 / std 1 (fit on train only) so no feature dominates.
+- **RMSE** — Root Mean Squared Error — the square root of MSE, in the same units as the target.
+- **R²** — How much variance the model explains: 1.0 = perfect, 0.0 = no better than guessing the mean.
+
+**Generalizing well**
+
+- **Overfitting** — Memorizing training noise; train loss falls while validation loss rises.
+- **Underfitting** — Too little capacity/training to capture the pattern — both losses stay high.
+- **Generalization** — Performing well on data the model has never seen. The real goal.
+- **Regularization** — Any technique that reduces overfitting (weight decay, dropout, early stopping…).
+- **L2 / weight decay** — Penalizes large weights → smoother, more general models. Our main regularizer.
+- **L1** — Penalizes weight magnitude to push some weights to exactly zero (sparsity).
+- **Dropout** — Randomly switches off neurons during training so the model can't rely on any single one.
+- **Early stopping** — Keep the weights from the best-validation epoch and stop when it stops improving.
+
+**Starting & tuning**
+
+- **Weight initialization** — The starting values of the weights before training begins.
+- **Xavier / Glorot** — An init scheme scaled for tanh/sigmoid that keeps signals a sensible size. Our pick.
+- **He / Kaiming** — An init scheme tuned for ReLU networks.
+- **Hyperparameter** — A setting you choose before training (learning rate, hidden size, dropout…), not learned.
+- **Grid search** — Trying every combination of a small set of hyperparameters. How we tuned.
+- **Random search** — Sampling random hyperparameter combinations — often more efficient than a grid.
+- **Reproducibility / seed** — Fixing the random seed so every run gives the same results.
